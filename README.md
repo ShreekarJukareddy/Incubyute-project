@@ -199,19 +199,47 @@ AI tools significantly accelerated the initial setup and boilerplate generation,
 - [x] Authentication middleware
 - [x] Input validation with express-validator
 - [x] Admin predefined account creation on startup
-- [ ] Sweet management endpoints (Admin CRUD)
-- [ ] Sweet inventory management
-- [ ] Frontend application
+- [x] Sweet management endpoints (Admin CRUD)
+- [x] Sweet inventory management (purchase/restock)
+- [x] Frontend application (React with TypeScript)
+  - [x] User authentication pages
+  - [x] Home page with sweet catalog
+  - [x] Search and category filtering
+  - [x] Admin dashboard with full CRUD
+  - [x] Restock inventory management
 - [ ] Deployment
 
-## 👤 Author
+## � Test Coverage
 
-*Your Name*
+- **Total Tests:** 126 passing
+- **Coverage:** 90.34% statements, 75% branches
+- **Test Files:** 10 test suites
+- **TDD Pattern:** RED-GREEN-REFACTOR commits
 
-## 📄 License
+## 🎨 Frontend Features
+
+The React frontend (`/frontend`) includes:
+- 🔐 Login/Register pages with form validation
+- 🏠 Home page with responsive sweet grid
+- 🔍 Search and filter by category
+- 🛒 One-click purchase with stock validation
+- 👨‍💼 Admin dashboard with:
+  - Add/Edit/Delete sweets
+  - Restock inventory
+  - Table view of all sweets
+- 📱 Fully responsive design
+
+**Frontend URL:** http://localhost:3000  
+**Backend API:** http://localhost:5001/api
+
+## � Author
+
+Sweet Shop TDD Project
+
+## �📄 License
 
 ISC
 
 ---
 
-**Note**: This project is developed following TDD principles with frequent commits documenting the development journey.
+**Note**: This project is developed following strict TDD principles with RED-GREEN-REFACTOR commit patterns documenting the development journey.
