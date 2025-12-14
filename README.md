@@ -1,13 +1,21 @@
 # Sweet Shop Management System (MERN)
 
-Full-stack kata implementing a Sweet Shop management system with Express/TypeScript backend and React frontend, following TDD.
+Full-stack Sweet Shop management system built with Express + TypeScript + MongoDB backend and React + Vite frontend, following TDD.
 
-## Status
+## Features
 
-- Backend: scaffolded with TypeScript/Jest, MongoDB connection.
-- Frontend: Vite (React + TS) scaffolded; pending feature implementation.
+- User registration/login with JWT
+- Sweets CRUD (create/list/search/update/delete)
+- Purchase and restock flows with stock validation
+- Role-based access (admin can delete/restock/edit; users can purchase)
+- Responsive SPA dashboard with search/filter, purchase, and admin controls
 
-## Setup (local)
+## Tech Stack
+
+- Backend: Node.js, Express, TypeScript, MongoDB (Mongoose), Jest + Supertest
+- Frontend: React (Vite, TypeScript)
+
+## Local Setup
 
 Prerequisites: Node.js 18+, npm, and MongoDB running locally.
 
@@ -21,6 +29,12 @@ npm install
 npm run dev
 ```
 
+Run tests:
+
+```bash
+npm test
+```
+
 ### Frontend
 
 ```bash
@@ -29,16 +43,42 @@ npm install
 npm run dev
 ```
 
+Build:
+
+```bash
+npm run build
+```
+
+## API Endpoints (summary)
+
+- POST `/api/auth/register`
+- POST `/api/auth/login`
+- GET `/api/sweets`
+- GET `/api/sweets/search`
+- POST `/api/sweets`
+- PUT `/api/sweets/:id`
+- DELETE `/api/sweets/:id` (admin)
+- POST `/api/sweets/:id/purchase`
+- POST `/api/sweets/:id/restock` (admin)
+
+## Screenshots
+
+_(Add your screenshots of the app UI here.)_
+
 ## My AI Usage
 
-- Will document tools and prompts used during development here.
-- AI tools planned: GitHub Copilot / ChatGPT for scaffolding, tests, and refactors.
+- Tools: GitHub Copilot and ChatGPT.
+- How: Used AI for scaffolding boilerplate (Express/TypeScript setup, Vite React layout), drafting tests (auth & sweets flows), and refining UI structure and copy.
+- Impact: Accelerated setup, caught edge cases (duplicate users, stock checks), and sped up styling iterations.
 
-## Roadmap
+## Test Report
 
-- [ ] Auth (register/login) with JWT
-- [ ] Sweets CRUD & inventory endpoints
-- [ ] Frontend auth flow & dashboard
-- [ ] Search/filter/purchase UI
-- [ ] Admin actions (add/update/delete/restock)
-- [ ] Tests and deployment
+Backend: `npm test` (Jest) — passing.
+Frontend: `npm run build` (type-check + Vite build) — passing.
+
+## Roadmap / Next Steps
+
+- Add e2e tests (Playwright/Cypress)
+- Add persistent sessions/refresh tokens
+- Add deployment config (e.g., Render/Heroku backend, Vercel/Netlify frontend)
+- Add CI (lint/test)
