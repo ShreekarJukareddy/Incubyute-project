@@ -14,7 +14,13 @@ const createSweetValidation = [
     .withMessage('Name must be between 2 and 100 characters'),
   body('category')
     .trim()
-    .isIn(['Chocolate', 'Candy', 'Gummy', 'Lollipop', 'Cookie', 'Cake', 'Other'])
+    .isIn([
+      'Milk-Based Sweets',
+      'Sugar Syrup-Based Sweets',
+      'Dry Fruit & Nut-Based Sweets',
+      'Chocolate-Based Sweets',
+      'Bakery & Dessert Sweets',
+    ])
     .withMessage('Invalid category'),
   body('price')
     .isFloat({ min: 0 })
@@ -32,6 +38,10 @@ const createSweetValidation = [
     .trim()
     .isURL()
     .withMessage('Image URL must be a valid URL'),
+  body('unit')
+    .trim()
+    .isIn(['kg', 'units'])
+    .withMessage('Unit must be either "kg" or "units"'),
 ];
 
 const updateSweetValidation = [
@@ -43,7 +53,13 @@ const updateSweetValidation = [
   body('category')
     .optional()
     .trim()
-    .isIn(['Chocolate', 'Candy', 'Gummy', 'Lollipop', 'Cookie', 'Cake', 'Other'])
+    .isIn([
+      'Milk-Based Sweets',
+      'Sugar Syrup-Based Sweets',
+      'Dry Fruit & Nut-Based Sweets',
+      'Chocolate-Based Sweets',
+      'Bakery & Dessert Sweets',
+    ])
     .withMessage('Invalid category'),
   body('price')
     .optional()
@@ -63,6 +79,11 @@ const updateSweetValidation = [
     .trim()
     .isURL()
     .withMessage('Image URL must be a valid URL'),
+  body('unit')
+    .optional()
+    .trim()
+    .isIn(['kg', 'units'])
+    .withMessage('Unit must be either "kg" or "units"'),
 ];
 
 // Routes
