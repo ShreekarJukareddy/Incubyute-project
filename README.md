@@ -1,84 +1,211 @@
-# Sweet Shop Management System (MERN)
+# Sweet Shop Management System
 
-Full-stack Sweet Shop management system built with Express + TypeScript + MongoDB backend and React + Vite frontend, following TDD.
+A full-stack MERN (MongoDB, Express, React, Node.js) application for managing a sweet shop inventory with user authentication, admin controls, and e-commerce features.
 
-## Features
+## 🎯 Project Overview
 
-- User registration/login with JWT
-- Sweets CRUD (create/list/search/update/delete)
-- Purchase and restock flows with stock validation
-- Role-based access (admin can delete/restock/edit; users can purchase)
-- Responsive SPA dashboard with search/filter, purchase, and admin controls
+This application provides a comprehensive sweet shop management system with:
+- User registration and authentication
+- Admin panel for inventory management
+- Product browsing and filtering
+- Purchase functionality
+- Real-time stock management
 
-## Tech Stack
-
-- Backend: Node.js, Express, TypeScript, MongoDB (Mongoose), Jest + Supertest
-- Frontend: React (Vite, TypeScript)
-
-## Local Setup
-
-Prerequisites: Node.js 18+, npm, and MongoDB running locally.
+## 🛠️ Technology Stack
 
 ### Backend
+- **Node.js** with **TypeScript**
+- **Express.js** - Web framework
+- **MongoDB** - Database
+- **Mongoose** - ODM
+- **JWT** - Authentication
+- **bcryptjs** - Password hashing
+- **Jest** & **Supertest** - Testing
 
+### Frontend
+- **React** with **TypeScript**
+- **React Router** - Navigation
+- **Axios** - API calls
+- **CSS Modules** / **Tailwind CSS** - Styling
+
+## 📋 Prerequisites
+
+Before running this project, make sure you have:
+- Node.js (v18 or higher)
+- MongoDB (v6 or higher) running locally or a MongoDB Atlas account
+- npm or yarn package manager
+
+## 🚀 Getting Started
+
+### Backend Setup
+
+1. Navigate to the backend directory:
 ```bash
 cd backend
-cp .env.example .env
-# update MONGO_URI and JWT_SECRET
-npm install
-npm run dev
 ```
 
-Run tests:
+2. Install dependencies:
+```bash
+npm install
+```
 
+3. Create a `.env` file in the backend directory:
+```bash
+cp .env.example .env
+```
+
+4. Update the `.env` file with your configuration:
+```env
+PORT=5000
+NODE_ENV=development
+MONGODB_URI=mongodb://localhost:27017/sweet-shop
+JWT_SECRET=your-super-secret-jwt-key-change-this-in-production
+JWT_EXPIRES_IN=7d
+ADMIN_EMAIL=admin@sweetshop.com
+ADMIN_PASSWORD=Admin@123
+```
+
+5. Make sure MongoDB is running:
+```bash
+# If using local MongoDB
+mongod
+
+# Or connect to MongoDB Atlas by updating MONGODB_URI in .env
+```
+
+6. Run tests:
 ```bash
 npm test
 ```
 
-### Frontend
-
+7. Start the development server:
 ```bash
-cd frontend
-npm install
 npm run dev
 ```
 
-Build:
+The backend API will be available at `http://localhost:5000`
 
-```bash
-npm run build
+### Frontend Setup
+
+*(Coming soon after backend completion)*
+
+## 📁 Project Structure
+
+```
+sweet-shop/
+├── backend/
+│   ├── src/
+│   │   ├── config/          # Configuration files
+│   │   ├── models/          # Database models
+│   │   ├── controllers/     # Request handlers
+│   │   ├── routes/          # API routes
+│   │   ├── middleware/      # Custom middleware
+│   │   ├── utils/           # Utility functions
+│   │   └── server.ts        # Entry point
+│   ├── package.json
+│   ├── tsconfig.json
+│   └── jest.config.js
+└── frontend/
+    └── (Coming soon)
 ```
 
-## API Endpoints (summary)
+## 🧪 Testing
 
-- POST `/api/auth/register`
-- POST `/api/auth/login`
-- GET `/api/sweets`
-- GET `/api/sweets/search`
-- POST `/api/sweets`
-- PUT `/api/sweets/:id`
-- DELETE `/api/sweets/:id` (admin)
-- POST `/api/sweets/:id/purchase`
-- POST `/api/sweets/:id/restock` (admin)
+This project follows Test-Driven Development (TDD) practices.
 
-## Screenshots
+Run tests:
+```bash
+cd backend
+npm test
+```
 
-_(Add your screenshots of the app UI here.)_
+Run tests in watch mode:
+```bash
+npm run test:watch
+```
 
-## My AI Usage
+Generate coverage report:
+```bash
+npm test -- --coverage
+```
 
-- Tools: GitHub Copilot and ChatGPT.
-- How: Used AI for scaffolding boilerplate (Express/TypeScript setup, Vite React layout), drafting tests (auth & sweets flows), and refining UI structure and copy.
-- Impact: Accelerated setup, caught edge cases (duplicate users, stock checks), and sped up styling iterations.
+## 🔐 Authentication
 
-## Test Report
+### Default Admin Credentials
+- Email: `admin@sweetshop.com`
+- Password: `Admin@123`
 
-Backend: `npm test` (Jest) — passing.
-Frontend: `npm run build` (type-check + Vite build) — passing.
+*(Change these in production)*
 
-## Roadmap / Next Steps
+## 📡 API Endpoints
 
-- Add e2e tests (Playwright/Cypress)
-- Add persistent sessions/refresh tokens
-- Add deployment config (e.g., Render/Heroku backend, Vercel/Netlify frontend)
-- Add CI (lint/test)
+### Authentication
+- `POST /api/auth/register` - Register a new user
+- `POST /api/auth/login` - Login user/admin
+
+### Sweets (Protected)
+- `GET /api/sweets` - Get all sweets
+- `GET /api/sweets/:id` - Get single sweet
+- `GET /api/sweets/search` - Search sweets
+- `POST /api/sweets` - Add new sweet (Admin only)
+- `PUT /api/sweets/:id` - Update sweet (Admin only)
+- `DELETE /api/sweets/:id` - Delete sweet (Admin only)
+
+### Inventory (Protected)
+- `POST /api/sweets/:id/purchase` - Purchase sweet
+- `POST /api/sweets/:id/restock` - Restock sweet (Admin only)
+
+## 🤖 My AI Usage
+
+### Tools Used
+I used **GitHub Copilot** extensively throughout the development of this project.
+
+### How I Used AI
+
+1. **Project Setup & Boilerplate**
+   - Used Copilot to generate initial `package.json` configuration
+   - Generated TypeScript and Jest configuration files
+   - Created folder structure recommendations
+
+2. **Database Models**
+   - Copilot helped design Mongoose schemas with validation
+   - Generated comprehensive test cases for models
+   - Suggested field validations and constraints
+
+3. **Test Writing (TDD)**
+   - Used Copilot to generate test cases for each model
+   - Got suggestions for edge cases and validation scenarios
+   - Helped structure tests following Jest best practices
+
+4. **Code Organization**
+   - Received suggestions for file structure
+   - Got recommendations for TypeScript types and interfaces
+   - Assistance with error handling patterns
+
+### Reflection
+
+AI tools significantly accelerated the initial setup and boilerplate generation, allowing me to focus on business logic and architecture decisions. However, I reviewed and modified all AI-generated code to ensure it met the specific requirements and followed best practices. The TDD approach helped validate that AI suggestions worked correctly.
+
+## 📝 Development Features Completed
+
+- [x] Project initialization with TypeScript
+- [x] Database configuration
+- [x] User model with validation
+- [x] Sweet model with validation
+- [x] Comprehensive test suite for models
+- [ ] Authentication endpoints
+- [ ] Sweet management endpoints
+- [ ] Frontend application
+- [ ] Deployment
+
+## 👤 Author
+
+*Your Name*
+
+## 📄 License
+
+ISC
+
+---
+
+**Note**: This project is developed following TDD principles with frequent commits documenting the development journey.
