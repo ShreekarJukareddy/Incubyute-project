@@ -27,6 +27,7 @@ const sweets: Sweet[] = [
     quantity: 50,
     unit: 'kg',
     description: 'Soft and spongy cottage cheese balls soaked in light sugar syrup',
+    imageUrl: 'https://images.unsplash.com/photo-1631452180519-c014fe946bc7?w=400',
   },
   {
     name: 'Gulab Jamun',
@@ -35,6 +36,7 @@ const sweets: Sweet[] = [
     quantity: 45,
     unit: 'kg',
     description: 'Deep-fried milk solid balls soaked in rose-flavored sugar syrup',
+    imageUrl: 'https://images.unsplash.com/photo-1589301773859-34e3758c5a97?w=400',
   },
   {
     name: 'Sandesh',
@@ -43,6 +45,7 @@ const sweets: Sweet[] = [
     quantity: 30,
     unit: 'kg',
     description: 'Bengali delicacy made from fine cottage cheese and sugar',
+    imageUrl: 'https://images.unsplash.com/photo-1599599810769-bcde5a160d32?w=400',
   },
   {
     name: 'Ras Malai',
@@ -51,6 +54,7 @@ const sweets: Sweet[] = [
     quantity: 25,
     unit: 'kg',
     description: 'Soft paneer patties soaked in sweet, thickened milk with cardamom',
+    imageUrl: 'https://images.unsplash.com/photo-1606491956689-2ea866880c84?w=400',
   },
   {
     name: 'Kalakand',
@@ -59,6 +63,7 @@ const sweets: Sweet[] = [
     quantity: 35,
     unit: 'kg',
     description: 'Milk cake made from solidified, sweetened milk and cottage cheese',
+    imageUrl: 'https://images.unsplash.com/photo-1626074353765-517a65ece1c5?w=400',
   },
 
   // Sugar Syrup-Based Sweets
@@ -69,6 +74,7 @@ const sweets: Sweet[] = [
     quantity: 40,
     unit: 'kg',
     description: 'Crispy, deep-fried spirals soaked in sugar syrup with saffron',
+    imageUrl: 'https://images.unsplash.com/photo-1586190848861-99aa4a171e90?w=400',
   },
   {
     name: 'Imarti',
@@ -77,6 +83,7 @@ const sweets: Sweet[] = [
     quantity: 35,
     unit: 'kg',
     description: 'Flower-shaped sweet made from urad dal batter and sugar syrup',
+    imageUrl: 'https://images.unsplash.com/photo-1628520235116-7db2f9a5f606?w=400',
   },
   {
     name: 'Balushahi',
@@ -85,6 +92,7 @@ const sweets: Sweet[] = [
     quantity: 30,
     unit: 'kg',
     description: 'Flaky, glazed doughnut-like sweet soaked in sugar syrup',
+    imageUrl: 'https://images.unsplash.com/photo-1601050690597-df0568f70950?w=400',
   },
   {
     name: 'Gulab Jamun Dry',
@@ -93,6 +101,7 @@ const sweets: Sweet[] = [
     quantity: 25,
     unit: 'kg',
     description: 'Dry variant of gulab jamun with a firmer texture',
+    imageUrl: 'https://images.unsplash.com/photo-1589301773859-34e3758c5a97?w=400',
   },
 
   // Dry Fruit & Nut-Based Sweets
@@ -103,6 +112,7 @@ const sweets: Sweet[] = [
     quantity: 20,
     unit: 'kg',
     description: 'Premium cashew fudge in diamond shapes, garnished with silver leaf',
+    imageUrl: 'https://images.unsplash.com/photo-1610192244261-3f33de3f55e4?w=400',
   },
   {
     name: 'Badam Barfi',
@@ -111,6 +121,7 @@ const sweets: Sweet[] = [
     quantity: 22,
     unit: 'kg',
     description: 'Rich almond fudge with aromatic cardamom flavor',
+    imageUrl: 'https://images.unsplash.com/photo-1633945274309-7ae5f5df3f43?w=400',
   },
   {
     name: 'Pista Barfi',
@@ -119,6 +130,7 @@ const sweets: Sweet[] = [
     quantity: 18,
     unit: 'kg',
     description: 'Delicious pistachio fudge with natural green color',
+    imageUrl: 'https://images.unsplash.com/photo-1631016800696-5ea8801b3c2a?w=400',
   },
   {
     name: 'Anjeer Barfi',
@@ -127,6 +139,7 @@ const sweets: Sweet[] = [
     quantity: 15,
     unit: 'kg',
     description: 'Fig-based sweet with mixed dry fruits and nuts',
+    imageUrl: 'https://images.unsplash.com/photo-1628520235116-7db2f9a5f606?w=400',
   },
   {
     name: 'Dry Fruit Ladoo',
@@ -135,6 +148,7 @@ const sweets: Sweet[] = [
     quantity: 25,
     unit: 'kg',
     description: 'Mixed dry fruit balls with dates, cashews, and almonds',
+    imageUrl: 'https://images.unsplash.com/photo-1596040033229-a0b0c2ec3e8e?w=400',
   },
 
   // Chocolate-Based Sweets
@@ -145,6 +159,7 @@ const sweets: Sweet[] = [
     quantity: 30,
     unit: 'kg',
     description: 'Fusion sweet combining traditional barfi with rich chocolate',
+    imageUrl: 'https://images.unsplash.com/photo-1599599810769-bcde5a160d32?w=400',
   },
   {
     name: 'Chocolate Sandesh',
@@ -153,6 +168,7 @@ const sweets: Sweet[] = [
     quantity: 28,
     unit: 'kg',
     description: 'Bengali sandesh infused with premium chocolate',
+    imageUrl: 'https://images.unsplash.com/photo-1606312619070-d48b4cda81f5?w=400',
   },
   {
     name: 'Chocolate Peda',
@@ -161,6 +177,7 @@ const sweets: Sweet[] = [
     quantity: 35,
     unit: 'kg',
     description: 'Soft milk-based sweet flavored with cocoa and chocolate chips',
+    imageUrl: 'https://images.unsplash.com/photo-1582067788397-13112b8448f2?w=400',
   },
 
   // Bakery & Dessert Sweets
@@ -171,6 +188,7 @@ const sweets: Sweet[] = [
     quantity: 20,
     unit: 'kg',
     description: 'Soft and moist cake made with khoya (reduced milk)',
+    imageUrl: 'https://images.unsplash.com/photo-1578985545062-69928b1d9587?w=400',
   },
   {
     name: 'Nan Khatai',
@@ -179,6 +197,7 @@ const sweets: Sweet[] = [
     quantity: 40,
     unit: 'kg',
     description: 'Traditional Indian shortbread cookies with cardamom',
+    imageUrl: 'https://images.unsplash.com/photo-1558961363-fa8fdf82db35?w=400',
   },
   {
     name: 'Milk Cake',
@@ -187,6 +206,7 @@ const sweets: Sweet[] = [
     quantity: 25,
     unit: 'kg',
     description: 'Dense, crumbly cake made from condensed milk',
+    imageUrl: 'https://images.unsplash.com/photo-1626074353765-517a65ece1c5?w=400',
   },
   {
     name: 'Kulfi',
@@ -195,6 +215,7 @@ const sweets: Sweet[] = [
     quantity: 100,
     unit: 'units',
     description: 'Traditional Indian ice cream on a stick with cardamom and nuts',
+    imageUrl: 'https://images.unsplash.com/photo-1563805042-7684c019e1cb?w=400',
   },
   {
     name: 'Gajar Halwa',
@@ -203,6 +224,7 @@ const sweets: Sweet[] = [
     quantity: 30,
     unit: 'kg',
     description: 'Sweet carrot pudding with milk, ghee, and dry fruits',
+    imageUrl: 'https://images.unsplash.com/photo-1606491956689-2ea866880c84?w=400',
   },
 ];
 
