@@ -4,6 +4,7 @@ import dotenv from 'dotenv';
 import { connectDB } from './config/database';
 import authRoutes from './routes/auth';
 import sweetRoutes from './routes/sweets';
+import inventoryRoutes from './routes/inventory';
 import { createAdminUser } from './utils/seedAdmin';
 
 dotenv.config();
@@ -24,6 +25,7 @@ app.get('/health', (req, res) => {
 // API Routes
 app.use('/api/auth', authRoutes);
 app.use('/api/sweets', sweetRoutes);
+app.use('/api/sweets', inventoryRoutes);
 
 // Connect to database and start server
 const startServer = async () => {

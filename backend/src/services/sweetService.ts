@@ -55,4 +55,44 @@ export class SweetService {
     const sweets = await Sweet.find(filter).sort({ createdAt: -1 });
     return sweets;
   }
+
+  async purchaseSweet(id: string, quantity: number): Promise<ISweet> {
+    if (quantity < 1) {
+      throw new Error('Purchase quantity must be at least 1');
+    }
+
+    const sweet = await Sweet.findById(id);
+    if (!sweet) {
+      throw new Error('Sweet not found');
+    }
+
+    if (sweet.quantity === 0) {
+      throw new Error('Sweet is out of stock');
+    }
+
+    if (sweet.quantity < quantity) {
+      throw new Error('Insufficient quantity available');
+    }
+
+    sweet.quantity -= quantity;
+    await sweet.save();
+
+    return sweet;
+  }
+
+  async restockSweet(id: string, quantity: number): Promise<ISweet> {
+    if (quantity < 1) {
+      throw new Error('Restock quantity must be at least 1');
+    }
+
+    const sweet = await Sweet.findById(id);
+    if (!sweet) {
+      throw new Error('Sweet not found');
+    }
+
+    sweet.quantity += quantity;
+    await sweet.save();
+
+    return sweet;
+  }
 }
