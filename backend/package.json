@@ -4,8 +4,8 @@
   "description": "Sweet Shop Management System Backend API",
   "main": "dist/server.js",
   "scripts": {
-    "test": "jest --watchAll=false --coverage",
-    "test:watch": "jest --watch",
+    "test": "jest --watchAll=false --coverage --runInBand",
+    "test:watch": "jest --watch --runInBand",
     "dev": "ts-node-dev --respawn --transpile-only src/server.ts",
     "build": "tsc",
     "start": "node dist/server.js",

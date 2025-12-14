@@ -193,7 +193,12 @@ AI tools significantly accelerated the initial setup and boilerplate generation,
 - [x] User model with validation
 - [x] Sweet model with validation
 - [x] Comprehensive test suite for models
-- [ ] Authentication endpoints
+- [x] User authentication (Register/Login)
+- [x] JWT token generation and verification
+- [x] Password hashing with bcrypt
+- [x] Authentication middleware
+- [x] Input validation with express-validator
+- [ ] Admin predefined account creation
 - [ ] Sweet management endpoints
 - [ ] Frontend application
 - [ ] Deployment
