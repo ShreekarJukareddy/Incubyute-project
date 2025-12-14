@@ -39,18 +39,20 @@ describe('OrderService', () => {
     userId = user._id.toString();
 
     const sweet1 = await Sweet.create({
-      name: 'Chocolate Bar',
-      category: 'Chocolate',
-      price: 2.5,
+      name: 'Rasgulla',
+      category: 'Milk-Based Sweets',
+      price: 250,
       quantity: 10,
+      unit: 'kg',
     });
     sweet1Id = sweet1._id.toString();
 
     const sweet2 = await Sweet.create({
-      name: 'Gummy Bears',
-      category: 'Gummy',
-      price: 1.5,
+      name: 'Gulab Jamun',
+      category: 'Sugar Syrup-Based Sweets',
+      price: 150,
       quantity: 20,
+      unit: 'kg',
     });
     sweet2Id = sweet2._id.toString();
   });
@@ -71,9 +73,9 @@ describe('OrderService', () => {
 
       expect(order.user.toString()).toBe(userId);
       expect(order.items).toHaveLength(1);
-      expect(order.items[0].name).toBe('Chocolate Bar');
+      expect(order.items[0].name).toBe('Rasgulla');
       expect(order.items[0].quantity).toBe(2);
-      expect(order.totalAmount).toBe(5.0);
+      expect(order.totalAmount).toBe(500);
       expect(order.status).toBe('completed');
     });
 
@@ -89,7 +91,7 @@ describe('OrderService', () => {
       const order = await orderService.createOrder(orderData);
 
       expect(order.items).toHaveLength(2);
-      expect(order.totalAmount).toBe(9.5); // (2.5 * 2) + (1.5 * 3)
+      expect(order.totalAmount).toBe(950); // (250 * 2) + (150 * 3)
     });
 
     it('should decrease sweet quantities after order', async () => {

@@ -29,19 +29,19 @@ describe('Order Model', () => {
         items: [
           {
             sweet: validSweetId,
-            name: 'Chocolate Bar',
-            price: 2.5,
+            name: 'Rasgulla',
+            price: 250,
             quantity: 2,
           },
         ],
-        totalAmount: 5.0,
+        totalAmount: 500,
         status: 'completed',
       });
 
       expect(order.user).toEqual(validUserId);
       expect(order.items).toHaveLength(1);
-      expect(order.items[0].name).toBe('Chocolate Bar');
-      expect(order.totalAmount).toBe(5.0);
+      expect(order.items[0].name).toBe('Rasgulla');
+      expect(order.totalAmount).toBe(500);
       expect(order.status).toBe('completed');
     });
 
@@ -51,22 +51,22 @@ describe('Order Model', () => {
         items: [
           {
             sweet: validSweetId,
-            name: 'Chocolate',
-            price: 2.5,
+            name: 'Rasgulla',
+            price: 250,
             quantity: 2,
           },
           {
             sweet: new mongoose.Types.ObjectId(),
-            name: 'Candy',
-            price: 1.0,
+            name: 'Gulab Jamun',
+            price: 150,
             quantity: 3,
           },
         ],
-        totalAmount: 8.0,
+        totalAmount: 950,
       });
 
       expect(order.items).toHaveLength(2);
-      expect(order.totalAmount).toBe(8.0);
+      expect(order.totalAmount).toBe(950);
     });
 
     it('should default status to completed', async () => {

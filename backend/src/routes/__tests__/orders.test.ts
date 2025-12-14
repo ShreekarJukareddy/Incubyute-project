@@ -56,18 +56,20 @@ describe('Order API', () => {
     adminToken = adminLogin.token;
 
     const sweet1 = await Sweet.create({
-      name: 'Chocolate',
-      category: 'Chocolate',
-      price: 2.5,
+      name: 'Rasgulla',
+      category: 'Milk-Based Sweets',
+      price: 250,
       quantity: 10,
+      unit: 'kg',
     });
     sweet1Id = sweet1._id.toString();
 
     const sweet2 = await Sweet.create({
-      name: 'Candy',
-      category: 'Candy',
-      price: 1.0,
+      name: 'Gulab Jamun',
+      category: 'Sugar Syrup-Based Sweets',
+      price: 150,
       quantity: 20,
+      unit: 'kg',
     });
     sweet2Id = sweet2._id.toString();
   });

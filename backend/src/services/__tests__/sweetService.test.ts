@@ -22,11 +22,12 @@ describe('SweetService', () => {
   describe('createSweet', () => {
     it('should create a new sweet successfully', async () => {
       const sweetData = {
-        name: 'Chocolate Bar',
-        category: 'Chocolate',
-        price: 2.99,
-        quantity: 100,
-        description: 'Delicious milk chocolate',
+        name: 'Rasgulla',
+        category: 'Milk-Based Sweets',
+        price: 299,
+        quantity: 10,
+        unit: 'kg',
+        description: 'Soft and spongy milk-based sweet',
       };
 
       const sweet = await sweetService.createSweet(sweetData);
@@ -36,6 +37,7 @@ describe('SweetService', () => {
       expect(sweet.category).toBe(sweetData.category);
       expect(sweet.price).toBe(sweetData.price);
       expect(sweet.quantity).toBe(sweetData.quantity);
+      expect(sweet.unit).toBe(sweetData.unit);
     });
 
     it('should fail to create sweet with invalid data', async () => {
@@ -43,6 +45,7 @@ describe('SweetService', () => {
         name: 'Test',
         category: 'InvalidCategory',
         price: -5,
+        unit: 'kg',
       };
 
       await expect(sweetService.createSweet(invalidData)).rejects.toThrow();
@@ -51,9 +54,9 @@ describe('SweetService', () => {
 
   describe('getAllSweets', () => {
     it('should return all sweets', async () => {
-      await Sweet.create({ name: 'Sweet 1', category: 'Chocolate', price: 1.99, quantity: 50 });
-      await Sweet.create({ name: 'Sweet 2', category: 'Candy', price: 0.99, quantity: 100 });
-      await Sweet.create({ name: 'Sweet 3', category: 'Gummy', price: 2.49, quantity: 75 });
+      await Sweet.create({ name: 'Rasgulla', category: 'Milk-Based Sweets', price: 199, quantity: 50, unit: 'kg' });
+      await Sweet.create({ name: 'Gulab Jamun', category: 'Sugar Syrup-Based Sweets', price: 99, quantity: 100, unit: 'units' });
+      await Sweet.create({ name: 'Kaju Katli', category: 'Dry Fruit & Nut-Based Sweets', price: 549, quantity: 75, unit: 'kg' });
 
       const sweets = await sweetService.getAllSweets();
 
@@ -72,16 +75,17 @@ describe('SweetService', () => {
   describe('getSweetById', () => {
     it('should return sweet by id', async () => {
       const sweet = await Sweet.create({
-        name: 'Test Sweet',
-        category: 'Chocolate',
-        price: 1.99,
+        name: 'Rasgulla',
+        category: 'Milk-Based Sweets',
+        price: 199,
         quantity: 50,
+        unit: 'kg',
       });
 
       const foundSweet = await sweetService.getSweetById(sweet._id.toString());
 
       expect(foundSweet).toBeDefined();
-      expect(foundSweet?.name).toBe('Test Sweet');
+      expect(foundSweet?.name).toBe('Rasgulla');
     });
 
     it('should return null for non-existent id', async () => {
@@ -96,22 +100,23 @@ describe('SweetService', () => {
     it('should update sweet successfully', async () => {
       const sweet = await Sweet.create({
         name: 'Old Name',
-        category: 'Chocolate',
-        price: 1.99,
+        category: 'Milk-Based Sweets',
+        price: 199,
         quantity: 50,
+        unit: 'kg',
       });
 
       const updateData = {
         name: 'New Name',
-        price: 2.99,
+        price: 299,
       };
 
       const updatedSweet = await sweetService.updateSweet(sweet._id.toString(), updateData);
 
       expect(updatedSweet).toBeDefined();
       expect(updatedSweet?.name).toBe('New Name');
-      expect(updatedSweet?.price).toBe(2.99);
-      expect(updatedSweet?.category).toBe('Chocolate'); // Unchanged
+      expect(updatedSweet?.price).toBe(299);
+      expect(updatedSweet?.category).toBe('Milk-Based Sweets'); // Unchanged
     });
 
     it('should return null for non-existent id', async () => {
@@ -124,9 +129,10 @@ describe('SweetService', () => {
     it('should validate updated data', async () => {
       const sweet = await Sweet.create({
         name: 'Test Sweet',
-        category: 'Chocolate',
-        price: 1.99,
+        category: 'Milk-Based Sweets',
+        price: 199,
         quantity: 50,
+        unit: 'kg',
       });
 
       await expect(
@@ -139,9 +145,10 @@ describe('SweetService', () => {
     it('should delete sweet successfully', async () => {
       const sweet = await Sweet.create({
         name: 'To Delete',
-        category: 'Chocolate',
-        price: 1.99,
+        category: 'Milk-Based Sweets',
+        price: 199,
         quantity: 50,
+        unit: 'kg',
       });
 
       const deletedSweet = await sweetService.deleteSweet(sweet._id.toString());
@@ -164,11 +171,11 @@ describe('SweetService', () => {
   describe('searchSweets', () => {
     beforeEach(async () => {
       await Sweet.create([
-        { name: 'Dark Chocolate Bar', category: 'Chocolate', price: 3.99, quantity: 50 },
-        { name: 'Milk Chocolate Bar', category: 'Chocolate', price: 2.99, quantity: 100 },
-        { name: 'Gummy Bears', category: 'Gummy', price: 1.99, quantity: 75 },
-        { name: 'Lollipop', category: 'Lollipop', price: 0.99, quantity: 200 },
-        { name: 'Chocolate Cake', category: 'Cake', price: 5.99, quantity: 25 },
+        { name: 'Dark Chocolate Barfi', category: 'Chocolate-Based Sweets', price: 399, quantity: 50, unit: 'kg' },
+        { name: 'Milk Chocolate Fudge', category: 'Chocolate-Based Sweets', price: 299, quantity: 100, unit: 'kg' },
+        { name: 'Rasgulla', category: 'Milk-Based Sweets', price: 199, quantity: 75, unit: 'kg' },
+        { name: 'Gulab Jamun', category: 'Sugar Syrup-Based Sweets', price: 99, quantity: 200, unit: 'units' },
+        { name: 'Chocolate Cake', category: 'Bakery & Dessert Sweets', price: 599, quantity: 25, unit: 'units' },
       ]);
     });
 
@@ -180,42 +187,42 @@ describe('SweetService', () => {
     });
 
     it('should search by category', async () => {
-      const sweets = await sweetService.searchSweets({ category: 'Chocolate' });
+      const sweets = await sweetService.searchSweets({ category: 'Chocolate-Based Sweets' });
 
       expect(sweets).toHaveLength(2);
-      expect(sweets.every(s => s.category === 'Chocolate')).toBe(true);
+      expect(sweets.every(s => s.category === 'Chocolate-Based Sweets')).toBe(true);
     });
 
     it('should search by minimum price', async () => {
-      const sweets = await sweetService.searchSweets({ minPrice: 3.0 });
+      const sweets = await sweetService.searchSweets({ minPrice: 300 });
 
       expect(sweets.length).toBeGreaterThanOrEqual(2);
-      expect(sweets.every(s => s.price >= 3.0)).toBe(true);
+      expect(sweets.every(s => s.price >= 300)).toBe(true);
     });
 
     it('should search by maximum price', async () => {
-      const sweets = await sweetService.searchSweets({ maxPrice: 2.0 });
+      const sweets = await sweetService.searchSweets({ maxPrice: 200 });
 
       expect(sweets).toHaveLength(2);
-      expect(sweets.every(s => s.price <= 2.0)).toBe(true);
+      expect(sweets.every(s => s.price <= 200)).toBe(true);
     });
 
     it('should search by price range', async () => {
-      const sweets = await sweetService.searchSweets({ minPrice: 2.0, maxPrice: 4.0 });
+      const sweets = await sweetService.searchSweets({ minPrice: 200, maxPrice: 400 });
 
       expect(sweets.length).toBeGreaterThanOrEqual(2);
-      expect(sweets.every(s => s.price >= 2.0 && s.price <= 4.0)).toBe(true);
+      expect(sweets.every(s => s.price >= 200 && s.price <= 400)).toBe(true);
     });
 
     it('should combine multiple search criteria', async () => {
       const sweets = await sweetService.searchSweets({
         name: 'chocolate',
-        category: 'Chocolate',
-        maxPrice: 3.5,
+        category: 'Chocolate-Based Sweets',
+        maxPrice: 350,
       });
 
       expect(sweets).toHaveLength(1);
-      expect(sweets[0].name).toBe('Milk Chocolate Bar');
+      expect(sweets[0].name).toBe('Milk Chocolate Fudge');
     });
 
     it('should return empty array when no matches found', async () => {

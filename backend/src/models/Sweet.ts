@@ -5,6 +5,7 @@ export interface ISweet extends Document {
   category: string;
   price: number;
   quantity: number;
+  unit: 'kg' | 'units';
   description?: string;
   imageUrl?: string;
   createdAt: Date;
@@ -25,7 +26,13 @@ const sweetSchema = new Schema<ISweet>(
       required: [true, 'Category is required'],
       trim: true,
       enum: {
-        values: ['Chocolate', 'Candy', 'Gummy', 'Lollipop', 'Cookie', 'Cake', 'Other'],
+        values: [
+          'Milk-Based Sweets',
+          'Sugar Syrup-Based Sweets',
+          'Dry Fruit & Nut-Based Sweets',
+          'Chocolate-Based Sweets',
+          'Bakery & Dessert Sweets',
+        ],
         message: '{VALUE} is not a valid category',
       },
     },
@@ -39,6 +46,15 @@ const sweetSchema = new Schema<ISweet>(
       required: [true, 'Quantity is required'],
       min: [0, 'Quantity cannot be negative'],
       default: 0,
+    },
+    unit: {
+      type: String,
+      required: [true, 'Unit is required'],
+      enum: {
+        values: ['kg', 'units'],
+        message: '{VALUE} is not a valid unit',
+      },
+      default: 'units',
     },
     description: {
       type: String,
