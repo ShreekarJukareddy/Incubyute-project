@@ -198,8 +198,9 @@ AI tools significantly accelerated the initial setup and boilerplate generation,
 - [x] Password hashing with bcrypt
 - [x] Authentication middleware
 - [x] Input validation with express-validator
-- [ ] Admin predefined account creation
-- [ ] Sweet management endpoints
+- [x] Admin predefined account creation on startup
+- [ ] Sweet management endpoints (Admin CRUD)
+- [ ] Sweet inventory management
 - [ ] Frontend application
 - [ ] Deployment
 

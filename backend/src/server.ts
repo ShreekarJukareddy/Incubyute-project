@@ -3,6 +3,7 @@ import cors from 'cors';
 import dotenv from 'dotenv';
 import { connectDB } from './config/database';
 import authRoutes from './routes/auth';
+import { createAdminUser } from './utils/seedAdmin';
 
 dotenv.config();
 
@@ -26,6 +27,12 @@ app.use('/api/auth', authRoutes);
 const startServer = async () => {
   try {
     await connectDB();
+    
+    // Create admin user if it doesn't exist
+    const adminEmail = process.env.ADMIN_EMAIL;
+    const adminPassword = process.env.ADMIN_PASSWORD;
+    await createAdminUser(adminEmail, adminPassword);
+    
     app.listen(PORT, () => {
       console.log(`🚀 Server is running on port ${PORT}`);
     });
